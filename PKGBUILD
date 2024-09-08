@@ -1,4 +1,5 @@
-# Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
+# Maintainer: AniLeo <ani-leo@outlook.com>
+# Contributor: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 # Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
@@ -10,11 +11,11 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=mesa-git
-pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=24.3.0_devel.192733.56ea4e4fa63.d41d8cd
+pkgname=raspberrypi-mesa-git
+pkgdesc="An open-source implementation of the OpenGL specification, git version for Raspberry Pi devices"
+pkgver=24.3.0_devel.194257.588a65f29a9.d41d8cd
 pkgrel=1
-arch=('x86_64')
+arch=('aarch64')
 makedepends=(
     'git'
     'xorgproto'
@@ -67,9 +68,7 @@ provides=(
     'opencl-driver'
     'opengl-driver'
     'vulkan-driver'
-    'vulkan-intel'
-    'vulkan-nouveau'
-    'vulkan-radeon'
+    'vulkan-broadcom'
     'vulkan-swrast'
     'vulkan-virtio'
     'libva-mesa-driver'
@@ -80,9 +79,7 @@ provides=(
 conflicts=(
     'vulkan-mesa-layers'
     'opencl-clover-mesa'
-    'vulkan-intel'
-    'vulkan-nouveau'
-    'vulkan-radeon'
+    'vulkan-broadcom'
     'vulkan-swrast'
     'vulkan-virtio'
     'libva-mesa-driver'
@@ -260,21 +257,21 @@ build () {
         -D b_lto=false
         -D dri3=enabled
         -D egl=enabled
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,softpipe,llvmpipe,i915,iris,crocus,zink,d3d12
+        -D gallium-drivers=softpipe,llvmpipe,zink,virgl,svga,vc4,v3d
         -D gallium-extra-hud=true
         -D gallium-nine=true
-        -D gallium-omx=bellagio
+        -D gallium-omx=disabled
         -D gallium-opencl=icd
         -D gallium-rusticl=${_rusticl}
-        -D gallium-va=enabled
-        -D gallium-vdpau=enabled
-        -D gallium-xa=enabled
+        -D gallium-va=disabled
+        -D gallium-vdpau=disabled
+        -D gallium-xa=disabled
         -D gbm=enabled
         -D gles1=disabled
         -D gles2=enabled
         -D glvnd=enabled
         -D glx=dri
-        -D intel-clc=enabled
+        -D intel-clc=auto
         -D libunwind=enabled
         -D llvm=enabled
         -D lmsensors=enabled
@@ -284,7 +281,7 @@ build () {
         -D shared-glapi=enabled
         -D valgrind=disabled
         -D video-codecs=all
-        -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio,nouveau
+        -D vulkan-drivers=swrast,virtio,broadcom
         -D vulkan-layers=device-select,intel-nullhw,overlay
         -D tools=[]
         -D zstd=enabled
