@@ -2,4 +2,4 @@ mesa-git-*
 mesa
 pkg
 src
-
+*.gz
