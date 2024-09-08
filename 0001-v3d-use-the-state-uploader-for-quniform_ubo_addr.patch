@@ -1,0 +1,30 @@
+From 99cb28223796a95241a45444996741c683d274b2 Mon Sep 17 00:00:00 2001
+From: "Echo J." <aidas957@gmail.com>
+Date: Tue, 3 Sep 2024 08:12:51 +0300
+Subject: [PATCH] v3d: Use the state uploader for QUNIFORM_UBO_ADDR
+
+The normal uploader has a NULL pipe_resource in some cases which
+causes a segfault inside Gallium code
+
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/11823
+Fixes: 16f2770eb40 ("v3d: Upload all of UBO[0] if any indirect load occurs.")
+---
+ src/gallium/drivers/v3d/v3d_uniforms.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gallium/drivers/v3d/v3d_uniforms.c b/src/gallium/drivers/v3d/v3d_uniforms.c
+index 329d888d49e3a..ec6fbe6d3a3d6 100644
+--- a/src/gallium/drivers/v3d/v3d_uniforms.c
++++ b/src/gallium/drivers/v3d/v3d_uniforms.c
+@@ -326,7 +326,7 @@ v3d_write_uniforms(struct v3d_context *v3d, struct v3d_job *job,
+                          * the GPU.
+                         */
+                         if (!cb->cb[unit].buffer) {
+-                                u_upload_data(v3d->uploader, 0,
++                                u_upload_data(v3d->state_uploader, 0,
+                                               cb->cb[unit].buffer_size, 16,
+                                               cb->cb[unit].user_buffer,
+                                               &cb->cb[unit].buffer_offset,
+-- 
+GitLab
+
