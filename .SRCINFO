@@ -1,7 +1,7 @@
 pkgbase = raspberrypi-mesa-git
 	pkgdesc = An open-source implementation of the OpenGL specification, git version for Raspberry Pi devices
 	pkgver = 24.3.0_devel.194499.2a5a12cb71b.05036bf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mesa3d.org
 	arch = aarch64
 	license = custom
@@ -23,15 +23,13 @@ pkgbase = raspberrypi-mesa-git
 	makedepends = cmake
 	makedepends = python-packaging
 	makedepends = python-pyaml
-	makedepends = llvm-minimal-git
-	makedepends = libclc-minimal-git
-	makedepends = spirv-llvm-translator-minimal-git
-	makedepends = clang-minimal-git
-	makedepends = clang-opencl-headers-minimal-git
+	makedepends = llvm=18.1.8
+	makedepends = clang=18.1.8
+	makedepends = libclc
+	makedepends = spirv-llvm-translator
+	makedepends = spirv-tools
 	makedepends = rust
 	makedepends = rust-bindgen
-	makedepends = spirv-tools
-	makedepends = glslang
 	depends = libdrm
 	depends = libxxf86vm
 	depends = libxdamage
@@ -55,12 +53,11 @@ pkgbase = raspberrypi-mesa-git
 	depends = zlib
 	depends = python
 	depends = xcb-util-keysyms
-	depends = llvm-libs-minimal-git
-	depends = spirv-llvm-translator-minimal-git
-	depends = libclc-minimal-git
+	depends = llvm-libs=18.1.8
+	depends = clang
+	depends = libclc
+	depends = spirv-llvm-translator
 	depends = spirv-tools
-	depends = clang-libs-minimal-git
-	depends = clang-opencl-headers-minimal-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = vulkan-mesa-layers
 	provides = opencl-driver

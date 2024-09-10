@@ -14,7 +14,7 @@
 pkgname=raspberrypi-mesa-git
 pkgdesc="An open-source implementation of the OpenGL specification, git version for Raspberry Pi devices"
 pkgver=24.3.0_devel.194499.2a5a12cb71b.05036bf
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 makedepends=(
     'git'
@@ -140,8 +140,8 @@ done
 #
 
 _rusticl=false
-# MESA_WHICH_LLVM=${MESA_WHICH_LLVM:-4}
-MESA_WHICH_LLVM=${MESA_WHICH_LLVM:-1}
+MESA_WHICH_LLVM=${MESA_WHICH_LLVM:-4}
+
 case $MESA_WHICH_LLVM in
     1)
         # aur llvm-minimal-git
