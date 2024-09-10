@@ -63,7 +63,6 @@ pkgbase = raspberrypi-mesa-git
 	depends = clang-opencl-headers-minimal-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = vulkan-mesa-layers
-	provides = opencl-clover-mesa
 	provides = opencl-driver
 	provides = opengl-driver
 	provides = vulkan-driver

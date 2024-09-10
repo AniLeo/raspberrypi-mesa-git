@@ -64,7 +64,6 @@ depends=(
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(
     'vulkan-mesa-layers'
-    'opencl-clover-mesa'
     'opencl-driver'
     'opengl-driver'
     'vulkan-driver'
@@ -263,7 +262,7 @@ build () {
         -D gallium-drivers=softpipe,llvmpipe,zink,virgl,svga,vc4,v3d
         -D gallium-extra-hud=true
         -D gallium-nine=true
-        -D gallium-opencl=icd
+        -D gallium-opencl=disabled
         -D gallium-rusticl=${_rusticl}
         -D gallium-va=disabled
         -D gallium-vdpau=disabled
