@@ -14,7 +14,7 @@
 pkgname=raspberrypi-mesa-git
 pkgdesc="An open-source implementation of the OpenGL specification, git version for Raspberry Pi devices"
 pkgver=24.3.0_devel.194499.2a5a12cb71b.05036bf
-pkgrel=2
+pkgrel=1
 arch=('aarch64')
 makedepends=(
     'git'
@@ -27,7 +27,7 @@ makedepends=(
     'meson'
     'ninja'
     'glslang'
-    'directx-headers'
+    'directx-headers-git'
     'python-mako'
     'python-ply'
     'cbindgen'
@@ -42,7 +42,6 @@ depends=(
     'libxdamage'
     'libxshmfence'
     'libelf'
-    'libomxil-bellagio'
     'libunwind'
     'libglvnd'
     'wayland'
